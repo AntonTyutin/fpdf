@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Spot colors</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Spot colors</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:oliver@fpdf.org?subject=Spot%20colors">Olivier</a><br>
+License: FPDF
+<h2>Description</h2>
+This extension allows to use spot colors (used in professional printing). You define a spot color with:<br>
+<br>
+<code>AddSpotColor(<b>string</b> name, <b>int</b> c, <b>int</b> m, <b>int</b> y, <b>int</b> k)</code><br>
+<br>
+where <code>c</code>, <code>m</code>, <code>y</code> and <code>k</code> are the
+equivalent CMYK components. You can then select it with:<br>
+<br>
+<code>SetDrawSpotColor(<b>string</b> name [, <b>int</b> tint])</code><br>
+<code>SetFillSpotColor(<b>string</b> name [, <b>int</b> tint])</code><br>
+<code>SetTextSpotColor(<b>string</b> name [, <b>int</b> tint])</code><br>
+<br>
+where <code>tint</code> is the intensity of the color (100 by default, i.e. full intensity).
+</body>
+</html>

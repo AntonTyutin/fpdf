@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>POSTNET barcodes</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>POSTNET barcodes</h1>
+<h2>Informations</h2>
+Author: <a href="http://www.somacon.com/contact.php?subject=POSTNET+Barcodes" target="_blank">Shailesh Humbad</a><br>
+License: FPDF
+<h2>Description</h2>
+This is an extension for printing U.S. Postal Service POSTNET barcodes in PDF. It
+supports both 5 and 9 digit zip codes and includes a utility function for parsing zip
+codes from an address line. The barcode is drawn directly in PDF without using an image
+or special font.<br>
+<br>
+<code>POSTNETBarCode(<b>float</b> x, <b>float</b> y, <b>string</b> zipcode)</code><br>
+<br>
+<code><u>x</u></code>: abscissa of barcode<br>
+<code><u>y</u></code>: ordinate of barcode<br>
+<code><u>zipcode</u></code>: zip code to draw<br>
+<br>
+$zipcode must be a string containing a zip code of the form DDDDD or DDDDD-DDDD. This function
+will trigger a PHP error if the zip code is invalid, so if the string's validity is in question,
+use ParseZipCode first. The parameters $x and $y specify the lower left corner of the barcode
+in user units. This function changes the line width in the FPDF context.<br>
+<br>
+<code><b>string</b> ParseZipCode(<b>string</b> stringToParse)</code><br>
+<br>
+The parsed zip code returned will be the first string matching DDDDD or DDDDD-DDDD, in that
+order, where D is a digit from 0 through 9. The search begins at the end of $stringToParse.<br>
+If a valid zip code cannot be found, it returns an empty string. Otherwise, it returns the
+parsed zip code (including the hyphen if it's a 9-digit zip).<br>
+<br>
+An online example is available
+<a href="http://www.somacon.com/fpdf/dynamic_envelope_in_pdf.php" target="_blank">here</a>.<br>
+<br>
+<u>POSTNET BARCODES</u><br>
+<br>
+The specifications for POSTNET Barcodes can be found in U.S. Postal Service Publication
+25, Designing Letter and Reply Mail. See Chapter 2 for barcode placement specifications,
+and Chapter 4 for barcode reading and writing specifications.<br>
+<br>
+You can print barcodes on papers that will be inserted into envelopes with windows, or
+directly on envelopes. For envelopes with windows, in general, the barcode should be
+printed a minimum of 1/25" above the first line of the address, and below the top edge of
+the envelope window. The left and right clearance for the address should be a minimum of
+1/8", and the bottom clearance should be 1/25" minimum. The address must satisfy the
+minimum clearances regardless of where the mailpiece shifts to within the envelope.
+Note that 1/4" of clearance is preferred.<br>
+<br>
+Refer to the Guidelines for complete details.
+</body>
+</html>

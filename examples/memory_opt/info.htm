@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Memory optimisation</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Memory optimisation</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:nod@sqlopus.org?subject=Memory%20optimisation">Philip Clarke</a><br>
+License: FPDF
+<h2>Description</h2>
+Normally FPDF compresses the entire PDF in the _putpages() method at the very end of PDF
+generation, this can lead to a large uncompressed PDF being stored in memory.
+This modification compresses each finished page in _endpage() reducing the overall memory
+usage when generating large PDFs.<br>
+<br>
+To test with minimal external influences, use a file such as the provided test.php. In one
+terminal window as root run top like so:<br>
+<br>
+<kbd>~&gt; top -q | grep php</kbd><br>
+<br>
+then run the script from the command line, using:<br>
+<br>
+<kbd>~&gt; php -f test.php &gt; with_opt.pdf</kbd><br>
+<br>
+The "top" terminal window will scroll detailing memory usage of php (press q to exit).
+Then altering test.php to use the base class and running:<br>
+<br>
+<kbd>~&gt; php -f test.php &gt; no_opt.pdf</kbd><br>
+<br>
+will show the original behaviour giving identical sized PDF files (no_opt.pdf and
+with_opt.pdf). On a 600 MHz dual processor typical results were that the optimised php
+code uses a maximum of 7.3 Megabytes wheareas the original uses 15 M. Both tests
+typically take 2 minutes 15 secs. Over very large reports (2000 pages +) the optimised
+version is very slightly slower by a few seconds.<br>
+<br>
+Remark: there is also <a href='http://www.fpdf.org/?go=script&amp;id=76'>another script</a> for memory optimisation.
+</body>
+</html>

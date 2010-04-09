@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Alpha channel</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Alpha channel</h1>
+<h2>Informations</h2>
+Author: Valentin Schmidt<br>
+License: FPDF
+<h2>Description</h2>
+This script allows to use images (PNGs or JPGs) with alpha channels. The alpha channel can be supplied either
+via a separate PNG image (called a mask) or, for PNGs, an internal alpha channel can be used directly.
+For the latter, the GD 2.x extension is required.<br>
+<br>
+The mask must be a gray scale image (not palette-based nor true color). A black pixel means that the corresponding
+pixel in the main image is fully transparent; a white pixel means it's opaque. Values in between mean different
+degrees of transparency.<br>
+Using a mask has several advantages:<br>
+<br>
+- GD is not required<br>
+- Better quality (full 8-bit alpha channel, whereas GD internally only supports 7-bit alpha channels)<br>
+- Much faster (extraction of embedded alpha channel has to be done pixel-wise)<br>
+<br>
+A new version of Image() is provided:<br>
+<br>
+<code>Image(<b>string</b> file, <b>float</b> x, <b>float</b> y [, <b>float</b> w [, <b>float</b> h [, <b>string</b> type [, <b>mixed</b> link [, <b>boolean</b> isMask [, <b>int</b> maskImg]]]]]])</code><br>
+<br>
+The parameters are the same as for the original method, with 2 additional (optional) ones:<br>
+<br>
+<code><U>isMask</U></code>: if specified and <code>true</code>, the image is used as a mask for another image. In this case,
+the parameters x, y, w and h will be ignored and the mask image itself is not visible on
+the page.<br>
+<code><U>maskImg</U></code>: number of image resource (as returned by previously called Image() with isMask
+parameter set to <code>true</code>) that will be used as a mask for this image.<br>
+<br>
+This version supports PNGs with internal alpha channel. Alternatively, you can also use this method:<br>
+<br>
+<code>ImagePngWithAlpha(<b>string</b> file, <b>float</b> x, <b>float</b> y [, <b>float</b> w [, <b>float</b> h [, <b>mixed</b> link]]])</code><br>
+<br>
+The parameters are the same as for the original method, but without the <code>type</code> parameter.<br>
+<br>
+<strong>Note:</strong> alpha channel requires at least Acrobat Reader 5.
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>MySQL report</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>MySQL report</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:nod@bouncing.org?subject=MySQL%20report">Philip Clarke</a><br>
+License: FPDF
+<h2>Description</h2>
+This script is a variation on <a href='http://www.fpdf.org/?go=script&amp;id=12'>Table with multi-page columns</a>.
+The difference is that when a query is executed initially the php loops through, gathers the
+string widths and then resizes the columns to try and fit everything onto the page. If a column
+never uses the maximum width alloted to it, the column is sized down and the saved space is
+re-assigned to the other columns. The aim of this was to be able to get out a good looking mysql
+report using as few a lines as possible, the disadvantage is that because the query has
+to loop through the results to work out the column sizes, it takes a bit of time. To
+counteract this, there is a dump option, that dumps out the php required to set up column
+widths, so one could check with a small report that the columns looked okay, then apply
+the dumped column widths to a larger report.
+</body>
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Sodipodi ("http://www.sodipodi.com/") -->
+<svg
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xml:space="preserve"
+   id="svg782"
+   sodipodi:version="0.34"
+   width="210mm"
+   height="297mm"><defs
+   id="defs784" /><sodipodi:namedview
+   id="base" /><g
+   id="g906"><rect
+   style="font-size:12;fill:none;fill-rule:evenodd;stroke:#000000;"
+   id="rect785"
+   width="324.924255"
+   height="177.788773"
+   x="59.2629166"
+   y="69.4151764"
+   sodipodi:nonprintable="true" /><text
+   xml:space="preserve"
+   style="font-size:20;font-weight:normal;font-family:Arial;"
+   x="455.711338"
+   y="136.852172"
+   id="text786"
+   sodipodi:linespacing="100%"><tspan
+   x="455.711334"
+   y="136.852173"
+   sodipodi:role="line"
+   id="tspan793">dynamic=label</tspan><tspan
+   x="455.711334"
+   y="156.852173"
+   sodipodi:role="line"
+   id="tspan795">cols=2</tspan><tspan
+   x="455.711334"
+   y="176.852173"
+   sodipodi:role="line"
+   id="tspan797">rows=5</tspan></text><text
+   xml:space="preserve"
+   style="font-size:16;font-weight:normal;stroke-width:1;font-family:Arial;font-style:normal;text-anchor:start;writing-mode:lr;"
+   x="100.133882"
+   y="128.130647"
+   id="text816"
+   sodipodi:linespacing="120%"><tspan
+   x="100.133881"
+   y="128.130646"
+   sodipodi:role="line"
+   id="tspan900">{name}</tspan><tspan
+   x="100.133881"
+   y="147.330647"
+   sodipodi:role="line"
+   id="tspan902">{address}</tspan><tspan
+   x="100.133881"
+   y="166.530647"
+   sodipodi:role="line"
+   id="tspan904">{city}</tspan></text></g></svg>

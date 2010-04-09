@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>i25 barcodes</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>i25 barcodes</h1>
+<h2>Informations</h2>
+Author: Matthias Lau<br>
+License: FPDF
+<h2>Description</h2>
+This script implements Interleaved 2 of 5 barcodes. An Interleaved 2 of 5 barcode contains digits (0 to 9)
+and encodes the data in the width of both bars and spaces. It is used primarily in the distribution and
+warehouse industry.<br>
+<br>
+<code>i25(<b>float</b> xpos, <b>float</b> ypos, <b>string</b> code [, <b>float</b> basewidth [, <b>float</b> height]])</code><br>
+<br>
+<code><u>xpos</u></code>: abscissa of barcode<br>
+<code><u>ypos</u></code>: ordinate of barcode<br>
+<code><u>code</u></code>: value of barcode<br>
+<code><u>basewidth</u></code>: corresponds to the width of a wide bar (defaults to 1)<br>
+<code><u>height</u></code>: bar height (defaults to 10)<br>
+<br>
+Note: if the length of the code is not even, a 0 is preprended.
+</body>
+</html>

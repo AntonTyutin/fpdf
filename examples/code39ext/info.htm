@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Extended Code 39 barcodes</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Extended Code 39 barcodes</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:ehavet@yahoo.fr?subject=Extended%20Code%2039%20barcodes">Emmanuel Havet</a><br>
+License: FPDF
+<h2>Description</h2>
+This script supports both standard and extended Code 39 barcodes. The extended mode gives access
+to the full ASCII range (from 0 to 127). The script also gives the possibility to add a checksum.<br>
+<br>
+<code>Code39(<b>float</b> x, <b>float</b> y, <b>string</b> code [, <b>boolean</b> ext [, <b>boolean</b> cks [, <b>float</b> w [, <b>float</b> h [, <b>boolean</b> wide]]]]])</code><br>
+<br>
+<code><u>x</u></code>: abscissa<br>
+<code><u>y</u></code>: ordinate<br>
+<code><u>code</u></code>: barcode value<br>
+<code><u>ext</u></code>: indicates if extended mode must be used (<code>true</code> by default)<br>
+<code><u>cks</u></code>: indicates if a checksum must be appended (<code>false</code> by default)<br>
+<code><u>w</u></code>: width of a narrow bar (<code>0.4</code> by default)<br>
+<code><u>h</u></code>: height of bars (<code>20</code> by default)<br>
+<code><u>wide</u></code>: indicates if ratio between wide and narrow bars is high; if yes, ratio is 3,
+if no, it's 2 (<code>true</code> by default)
+</body>
+</html>
