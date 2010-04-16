@@ -161,11 +161,11 @@ class FPDF
         }
         //Page format
         $this->PageFormats = array(
-            'a3'     => array(841.89,1190.55),
-            'a4'     => array(595.28,841.89),
-            'a5'     => array(420.94,595.28),
-            'letter' => array(612,792),
-            'legal'  => array(612,1008)
+        	'a3'     => array(841.89,1190.55),
+        	'a4'     => array(595.28,841.89),
+        	'a5'     => array(420.94,595.28),
+			'letter' => array(612,792),
+			'legal'  => array(612,1008)
         );
 
         if(is_string($format)) {
@@ -216,15 +216,7 @@ class FPDF
         $this->PDFVersion = '1.3';
     }
 
-    /**
-     * Sets page margins. If $right is not present, will take $left value
-     *
-     * @param int $left
-     * @param int $top
-     * @param int $right
-     * @return void
-     */
-    public function SetMargins($left, $top, $right=null)
+    function SetMargins($left, $top, $right=null)
     {
         //Set left, top and right margins
         $this->lMargin = $left;
@@ -235,13 +227,7 @@ class FPDF
         $this->rMargin = $right;
     }
 
-    /**
-     * Sets left margin
-     *
-     * @param int $margin
-     * @return void
-     */
-    public function SetLeftMargin($margin)
+    function SetLeftMargin($margin)
     {
         //Set left margin
         $this->lMargin = $margin;
@@ -250,39 +236,19 @@ class FPDF
         }
     }
 
-    /**
-     * Set top (upper) margin
-     *
-     * @param int $margin
-     * @return void
-     */
-    public function SetTopMargin($margin)
+    function SetTopMargin($margin)
     {
         //Set top margin
         $this->tMargin = $margin;
     }
 
-    /**
-     * Set right margin
-     *
-     * @param int $margin
-     * @return void
-     */
-    public function SetRightMargin($margin)
+    function SetRightMargin($margin)
     {
         //Set right margin
         $this->rMargin = $margin;
     }
 
-    /**
-     * Sets automatic page break when text meets bottom margin. If there is no margin defined, the
-     * bottom margin will be 0 (zero), the page border.
-     *
-     * @param bool $auto
-     * @param integer $margin
-     * @return void
-     */
-    public function SetAutoPageBreak($auto, $margin=0)
+    function SetAutoPageBreak($auto, $margin=0)
     {
         //Set auto page break mode and triggering margin
         $this->AutoPageBreak    = $auto;
@@ -290,15 +256,7 @@ class FPDF
         $this->PageBreakTrigger = $this->h-$margin;
     }
 
-
-    /**
-     * Sets the display mode of how the Pdf Reader Software could present the PDF file
-     *
-     * @param int $zoom Percentage. Posible values includes numbers or: 'fullpage', 'fullwidth', 'real', 'default'
-     * @param string $layout. Posile values: 'single', 'continuous', 'two', 'default'
-     * @return void
-     */
-    public function SetDisplayMode($zoom, $layout='continuous')
+    function SetDisplayMode($zoom, $layout='continuous')
     {
         //Set display mode in viewer
         if($zoom == 'fullpage' || $zoom == 'fullwidth' || $zoom == 'real' || $zoom == 'default' || !is_string($zoom)) {
@@ -314,30 +272,17 @@ class FPDF
         }
     }
 
-    /**
-     * Set compression to the PDF file if available
-     *
-     * @param  bool $compress
-     * @return void
-     */
-    public function SetCompression($compress)
+    function SetCompression($compress)
     {
         //Set page compression
         if(function_exists('gzcompress')) {
             $this->compress = $compress;
         } else {
-            $this->compress = false;
+            $this->compress=false;
         }
     }
 
-    /**
-     * Sets the documen title
-     *
-     * @param string $title
-     * @param bool $isUTF8
-     * @return void
-     */
-    public function SetTitle($title, $isUTF8=false)
+    function SetTitle($title, $isUTF8=false)
     {
         //Title of document
         if($isUTF8) {
@@ -346,14 +291,7 @@ class FPDF
         $this->title=$title;
     }
 
-    /**
-     * Sets document Subject information
-     *
-     * @param string $subject
-     * @param bool $isUTF8
-     * @return void
-     */
-    public function SetSubject($subject, $isUTF8=false)
+    function SetSubject($subject, $isUTF8=false)
     {
         //Subject of document
         if($isUTF8) {
@@ -362,14 +300,7 @@ class FPDF
         $this->subject = $subject;
     }
 
-    /**
-     * Sets document Author information
-     *
-     * @param string $author
-     * @param bool $isUTF8
-     * @return void
-     */
-    public function SetAuthor($author, $isUTF8=false)
+    function SetAuthor($author, $isUTF8=false)
     {
         //Author of document
         if($isUTF8) {
@@ -379,14 +310,7 @@ class FPDF
         $this->author = $author;
     }
 
-    /**
-     * Sets documet Keywords information
-     *
-     * @param string $keywords
-     * @param bool $isUTF8
-     * @return void
-     */
-    public function SetKeywords($keywords, $isUTF8=false)
+    function SetKeywords($keywords, $isUTF8=false)
     {
         //Keywords of document
         if($isUTF8) {
@@ -395,14 +319,7 @@ class FPDF
         $this->keywords = $keywords;
     }
 
-    /**
-     * Sets document Creator information
-     *
-     * @param sring $creator
-     * @param bool $isUTF8
-     * @return void
-     */
-    public function SetCreator($creator, $isUTF8=false)
+    function SetCreator($creator, $isUTF8=false)
     {
         //Creator of document
         if($isUTF8) {
@@ -411,59 +328,31 @@ class FPDF
         $this->creator = $creator;
     }
 
-
-    /**
-     * @todo Document this
-     *
-     * @param <type> $alias
-     * @return void
-     */
-    public function AliasNbPages($alias='{nb}')
+    function AliasNbPages($alias='{nb}')
     {
+        //Define an alias for total number of pages
         $this->AliasNbPages = $alias;
     }
 
-    /**
-     * Shows error message and dies.
-     * Caution! This kills your php script
-     *
-     * @todo Throw an Exception
-     * @param string $msg
-     * @return void
-     */
-    public function Error($msg)
+    function Error($msg)
     {
         //Fatal error
         die('<b>FPDF error:</b> '.$msg);
     }
 
-    /**
-     * Opens a new document
-     *
-     * @return void
-     */
-    public function Open()
+    function Open()
     {
         //Begin document
         $this->state = 1;
     }
 
-    /**
-     * Terminate document
-     *
-     * @return void
-     */
-    public function Close()
+    function Close()
     {
-        // If document is already finished
+        //Terminate document
         if($this->state == 3) {
-            /**
-             * @todo This must not return anything. If is already finished must do nothing. Fix if
-             */
             return;
         }
 
-        // It document is empty, adds a blank page
         if($this->page == 0) {
             $this->AddPage();
         }
@@ -478,13 +367,7 @@ class FPDF
         $this->_enddoc();
     }
 
-    /**
-     * Add a new page to the PDF document
-     *
-     * @param string $orientation Posible values: 'P' for Portrait, 'L' for Landscape
-     * @param string $format Those included in $this->PageFormats
-     */
-    public function AddPage($orientation='', $format='')
+    function AddPage($orientation='', $format='')
     {
         //Start a new page
         if($this->state == 0) {
@@ -565,46 +448,23 @@ class FPDF
         $this->ColorFlag = $cf;
     }
 
-
-    /**
-     * Function to execute in page header. To be implemented
-     *
-     * @return void
-     */
-    public function Header()
+    function Header()
     {
         //To be implemented in your own inherited class
     }
 
-    /**
-     * Function to extecute in page footer. To be implemented
-     *
-     * @return void
-     */
-    public function Footer()
+    function Footer()
     {
         //To be implemented in your own inherited class
     }
 
-    /**
-     * Returns current page number
-     * @return int
-     */
-    public function PageNo()
+    function PageNo()
     {
         //Get current page number
         return $this->page;
     }
 
-    /**
-     * Sets current draw color
-     *
-     * @param mixed $r Red part or color
-     * @param int $g Green part
-     * @param int $b Blue part
-     * @return void
-     */
-    public function SetDrawColor($r, $g=null, $b=null)
+    function SetDrawColor($r, $g=null, $b=null)
     {
         //Set color for all stroking operations
         if(($r == 0 && $g == 0 && $b == 0) || $g === null) {
@@ -617,16 +477,7 @@ class FPDF
         }
     }
 
-
-    /**
-     * Sets current fill color
-     *
-     * @param mixed $r Red part or color
-     * @param int $g Green part
-     * @param int $b Blue part
-     * @return void
-     */
-    public function SetFillColor($r, $g=null, $b=null)
+    function SetFillColor($r, $g=null, $b=null)
     {
         //Set color for all filling operations
         if(($r == 0 && $g == 0 && $b == 0) || $g === null) {
@@ -641,15 +492,7 @@ class FPDF
         }
     }
 
-    /**
-     * Sets current text color
-     *
-     * @param mixed $r Red part or color
-     * @param int $g Green part
-     * @param int $b Blue part
-     * @return void
-     */
-    public function SetTextColor($r, $g=null, $b=null)
+    function SetTextColor($r, $g=null, $b=null)
     {
         //Set color for text
         if(($r == 0 && $g == 0 && $b == 0) || $g === null) {
@@ -660,12 +503,7 @@ class FPDF
         $this->ColorFlag = ($this->FillColor != $this->TextColor);
     }
 
-    /**
-     * Get string width in the current font
-     * @param string $s
-     * @return int
-     */
-    public function GetStringWidth($s)
+    function GetStringWidth($s)
     {
         //Get width of a string in the current font
         $s  = (string)$s;
@@ -678,13 +516,7 @@ class FPDF
         return $w*$this->FontSize/1000;
     }
 
-    /**
-     * Sets the width of the line drawing
-     *
-     * @param int $width
-     * @return void
-     */
-    public function SetLineWidth($width)
+    function SetLineWidth($width)
     {
         //Set line width
         $this->LineWidth = $width;
@@ -693,32 +525,13 @@ class FPDF
         }
     }
 
-    /**
-     * Draws a line using given points
-     *
-     * @param int $x1
-     * @param int $y1
-     * @param int $x2
-     * @param int $y2
-     * @return void
-     */
-    public function Line($x1, $y1, $x2, $y2)
+    function Line($x1, $y1, $x2, $y2)
     {
         //Draw a line
         $this->_out(sprintf('%.2F %.2F m %.2F %.2F l S',$x1*$this->k,($this->h-$y1)*$this->k,$x2*$this->k,($this->h-$y2)*$this->k));
     }
 
-    /**
-     * Draws a rectangle usen the given point
-     *
-     * @param int $x
-     * @param int $y
-     * @param int $w
-     * @param int $h
-     * @param string $style Some posible Values: 'F','FD','DF'
-     * @return void
-     */
-    public function Rect($x, $y, $w, $h, $style='')
+    function Rect($x, $y, $w, $h, $style='')
     {
         //Draw a rectangle
         if($style == 'F') {
@@ -731,15 +544,7 @@ class FPDF
         $this->_out(sprintf('%.2F %.2F %.2F %.2F re %s',$x*$this->k,($this->h-$y)*$this->k,$w*$this->k,-$h*$this->k,$op));
     }
 
-    /**
-     * Adds new font to be used in the document
-     *
-     * @param string $family
-     * @param string $style
-     * @param string $file
-     * @return void
-     */
-    public function AddFont($family, $style='', $file='')
+    function AddFont($family, $style='', $file='')
     {
         //Add a TrueType or Type1 font
         $family=strtolower($family);
@@ -798,16 +603,7 @@ class FPDF
 
     }
 
-    /**
-     * Sets the font to be used to write in the document
-     *
-     * @global string $fpdf_charwidths
-     * @param string $family
-     * @param string $style
-     * @param int $size
-     * @return void
-     */
-    public function SetFont($family, $style='', $size=0)
+    function SetFont($family, $style='', $size=0)
     {
         //Select a font; size given in points
         global $fpdf_charwidths;
@@ -876,13 +672,7 @@ class FPDF
         }
     }
 
-    /**
-     * Sets the size of the font to be used for writing in the document.
-     *
-     * @param int $size
-     * @return void
-     */
-    public function SetFontSize($size)
+    function SetFontSize($size)
     {
         //Set font size in points
         if($this->FontSizePt==$size) {
@@ -895,12 +685,7 @@ class FPDF
         }
     }
 
-    /**
-     * Create a new internal link
-     *
-     * @return int Number of the link
-     */
-    public function AddLink()
+    function AddLink()
     {
         //Create a new internal link
         $n               = count($this->links) + 1;
@@ -908,14 +693,7 @@ class FPDF
         return $n;
     }
 
-    /**
-     * Set destination of internal link
-     *
-     * @param int $link
-     * @param int $y
-     * @param int $page
-     */
-    public function SetLink($link, $y=0, $page=-1)
+    function SetLink($link, $y=0, $page=-1)
     {
         //Set destination of internal link
         if($y == -1) {
@@ -927,29 +705,13 @@ class FPDF
         $this->links[$link] = array($page, $y);
     }
 
-    /**
-     * Put a link on the page
-     *
-     * @param int $x
-     * @param int $y
-     * @param int $w
-     * @param int $h
-     * @param int $link
-     */
-    public function Link($x, $y, $w, $h, $link)
+    function Link($x, $y, $w, $h, $link)
     {
         //Put a link on the page
         $this->PageLinks[$this->page][] = array($x*$this->k, $this->hPt-$y*$this->k, $w*$this->k, $h*$this->k, $link);
     }
 
-    /**
-     * Output a string
-     *
-     * @param int $x
-     * @param int $y
-     * @param string $txt
-     */
-    public function Text($x, $y, $txt)
+    function Text($x, $y, $txt)
     {
         //Output a string
         $s = sprintf('BT %.2F %.2F Td (%s) Tj ET',$x*$this->k,($this->h-$y)*$this->k,$this->_escape($txt));
@@ -964,29 +726,13 @@ class FPDF
         $this->_out($s);
     }
 
-    /**
-     * Checks if Accept Page Break
-     * @return bool
-     */
-    public function AcceptPageBreak()
+    function AcceptPageBreak()
     {
         //Accept automatic page break or not
         return $this->AutoPageBreak;
     }
 
-    /**
-     * Draws text in a cell
-     *
-     * @param int $w
-     * @param int $h
-     * @param string $txt
-     * @param int $border
-     * @param int $ln
-     * @param string $align Possible values 'L', 'C' and 'R'
-     * @param bool $fill
-     * @param string $link
-     */
-    public function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+    function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
     {
         //Output a cell
         $k = $this->k;
@@ -1086,16 +832,6 @@ class FPDF
 
     }
 
-    /**
-     * Output text with automatic or explicit line breaks
-     *
-     * @param int $w
-     * @param int $h
-     * @param string $txt
-     * @param int $border
-     * @param string $align
-     * @param bool $fill
-     */
     function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
     {
         //Output text with automatic or explicit line breaks
@@ -1214,13 +950,6 @@ class FPDF
         $this->x = $this->lMargin;
     }
 
-    /**
-     * Draws text in the current position
-     *
-     * @param int $h
-     * @param string $txt
-     * @param string $link
-     */
     function Write($h, $txt, $link='')
     {
         //Output text in flowing mode
@@ -1299,11 +1028,7 @@ class FPDF
         }
     }
 
-    /**
-     * Line feed
-     * @param int $h
-     */
-    public function Ln($h=null)
+    function Ln($h=null)
     {
         //Line feed; default value is last cell height
         $this->x=$this->lMargin;
@@ -1314,18 +1039,7 @@ class FPDF
         }
     }
 
-    /**
-     * Put an image on the page
-     *
-     * @param string $file
-     * @param int $x
-     * @param int $y
-     * @param int $w
-     * @param int $h
-     * @param string $type
-     * @param string $link
-     */
-    public function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
+    function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
     {
         //Put an image on the page
         if(!isset($this->images[$file])) {
@@ -1388,22 +1102,13 @@ class FPDF
         }
     }
 
-    /**
-     * Get current x position
-     *
-     * @return int
-     */
-    public function GetX()
+    function GetX()
     {
         //Get x position
         return $this->x;
     }
 
-    /**
-     * Sets current x position
-     * @param int $x
-     */
-    public function SetX($x)
+    function SetX($x)
     {
         //Set x position
         if($x >= 0) {
@@ -1414,23 +1119,13 @@ class FPDF
 
     }
 
-    /**
-     * Get current y position
-     * 
-     * @return int
-     */
-    public function GetY()
+    function GetY()
     {
         //Get y position
         return $this->y;
     }
 
-    /**
-     * Set current y position
-     *
-     * @param int $y
-     */
-    public function SetY($y)
+    function SetY($y)
     {
         //Set y position and reset x
         $this->x = $this->lMargin;
@@ -1442,12 +1137,6 @@ class FPDF
 
     }
 
-    /**
-     * Sets current position in x and y
-     *
-     * @param int $x
-     * @param int $y
-     */
     function SetXY($x, $y)
     {
         //Set x and y positions
@@ -1455,14 +1144,7 @@ class FPDF
         $this->SetX($x);
     }
 
-    /**
-     * Outputs a file
-     *
-     * @param string $name
-     * @param string $dest
-     * @return string
-     */
-    public function Output($name='', $dest='')
+    function Output($name='', $dest='')
     {
         //Output PDF to some destination
         if($this->state < 3) {
