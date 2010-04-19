@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SVG template engine</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>SVG template engine</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:alan@akbkhome.com?subject=SVG%20template%20engine">Alan Knowles</a><br>
+License: FPDF
+<h2>Description</h2>
+XML_SvgToPdf is a PEAR package meant to read a SVG template and generate a PDF. It is
+primarily designed to output labels. It has been tested with
+<a href="http://sourceforge.net/projects/sodipodi/" target="_blank">Sodipodi</a> (a free SVG editor).<br>
+It requires that you first install:<br>
+<br>
+- PEAR<br>
+- The <a href="http://pear.php.net/package/XML_Parser" target="_blank">XML_Parser</a> package<br>
+- The <a href="http://pear.php.net/package/XML_Tree" target="_blank">XML_Tree</a> package<br>
+<br>
+XML_SvgToPdf needs another package, XML_Tree_Morph, included in the archive.
+After you have installed the 4 packages, you must have in your PEAR/XML directory:<br>
+<br>
+- Parser.php<br>
+- SvgToPdf.php<br>
+- Tree.php<br>
+<br>
+In PEAR/XML/SvgToPdf:<br>
+<br>
+- Base.php<br>
+- G.php<br>
+- Path.php<br>
+- Rect.php<br>
+- Text.php<br>
+- Tspan.php<br>
+<br>
+In PEAR/XML/Tree:<br>
+<br>
+- Morph.php<br>
+- Node.php<br>
+<br>
+A label is defined by a dynamic area in the page. To define it, proceed like this:<br>
+<ul>
+<li>Draw a rectangle to delimit the area and mark it as non-printable (in the item properties).
+Note that this property is Sodipodi-specific (it adds the <code>sodipodi:nonprintable="true"</code>
+attribute to the <code>rect</code> element in the SVG file).</li>
+<li>Add a text with 3 lines (they won't appear in the PDF):<br>
+<br>
+dynamic=name (name of the group)<br>
+cols=number (number of columns)<br>
+rows=number (number of rows)<br>
+</li>
+<li>Add one or several texts with variables of the form {variable} in them.</li>
+<li>Make a group with all these elements.</li>
+</ul>
+The XML_SvgToPDF class provides a static factory method which creates a FPDF object
+and renders the SVG template on it:<br>
+<br>
+<code><b>object</b> construct(svg, [<b>array</b> data])</code><br>
+<br>
+The data array has a single element, whose key is the name of the dynamic group, and the
+value is an array with a number of elements. Each element corresponds to a label and is
+an array which gives the values for the {variable} variables.<br>
+<br>
+Note: images and curves are not supported.<br>
+You can find more details <a href="http://www.akbkhome.com/blog.php/View/26/PHP_SVG_and_PDFs.html" target="_blank">here</a>.
+</body>
+</html>

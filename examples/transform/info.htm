@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Transformations</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Transformations</h1>
+<h2>Informations</h2>
+Authors: <a href="mailto:wagner-moritz@gmx.de?subject=Transformations">Moritz Wagner</a> &amp; <a href="mailto:fpdf@kreativschmiede.de?subject=Transformations">Andreas Würmser</a><br>
+License: FPDF
+<h2>Description</h2>
+Performs the following 2D transformations: scaling, mirroring, translation, rotation and skewing.<br>
+Use StartTransform() before, and StopTransform() after the transformations to restore the
+normal behavior.<br>
+<br>
+<code>StartTransform()</code><br>
+<br>
+Use this before calling any tranformation.<br>
+<br>
+<code>ScaleX(<b>float</b> s_x [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<code>ScaleY(<b>float</b> s_y [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<code>ScaleXY(<b>float</b> s [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<code>Scale(<b>float</b> s_x, <b>float</b> s_y [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<br>
+s_x: scaling factor for width as percent. 0 is not allowed.<br>
+s_y: scaling factor for height as percent. 0 is not allowed.<br>
+s: scaling factor for width and height as percent. 0 is not allowed.<br>
+x: abscissa of the scaling center. Default is current x position<br>
+y: ordinate of the scaling center. Default is current y position<br>
+<br>
+<code>MirrorH([<b>float</b> x])</code><br>
+<br>
+Alias for scaling -100% in x-direction<br>
+x: abscissa of the axis of reflection<br>
+<br>
+<code>MirrorV([<b>float</b> y])</code><br>
+<br>
+Alias for scaling -100% in y-direction<br>
+y: ordinate of the axis of reflection<br>
+<br>
+<code>MirrorP([<b>float</b> x, [<b>float</b> y]])</code><br>
+<br>
+Point reflection on point (x, y). (alias for scaling -100 in x- and y-direction)<br>
+x: abscissa of the point. Default is current x position<br>
+y: ordinate of the point. Default is current y position<br>
+<br>
+<code>MirrorL([<b>float</b> angle [, <b>float</b> x [, <b>float</b> y]]])</code><br>
+<br>
+Reflection against a straight line through point (x, y) with the gradient angle (angle).<br>
+angle: gradient angle of the straight line. Default is 0 (horizontal line).<br>
+x: abscissa of the point. Default is current x position<br>
+y: ordinate of the point. Default is current y position<br>
+<br>
+<code>TranslateX(<b>float</b> t_x)</code><br>
+<code>TranslateY(<b>float</b> t_y)</code><br>
+<code>Translate(<b>float</b> t_x, <b>float</b> t_y)</code><br>
+<br>
+t_x: movement to the right<br>
+t_y: movement to the bottom<br>
+<br>
+<code>Rotate(<b>float</b> angle [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<br>
+angle: angle in degrees for counter-clockwise rotation<br>
+x: abscissa of the rotation center. Default is current x position<br>
+y: ordinate of the rotation center. Default is current y position<br>
+<br>
+<code>SkewX(<b>float</b> angle_x [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<code>SkewY(<b>float</b> angle_y [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<code>Skew(<b>float</b> angle_x, <b>float</b> angle_y [, <b>float</b> x [, <b>float</b> y]])</code><br>
+<br>
+angle_x: angle in degrees between -90 (skew to the left) and 90 (skew to the right)<br>
+angle_y: angle in degrees between -90 (skew to the bottom) and 90 (skew to the top)<br>
+x: abscissa of the skewing center. default is current x position<br>
+y: ordinate of the skewing center. default is current y position<br>
+<br>
+<code>StopTransform()</code><br>
+<br>
+Restores the normal painting and placing behavior as it was before calling StartTransform().
+</body>
+</html>

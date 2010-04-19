@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Tag-based formatting</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Tag-based formatting</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:pmorin@pascal-morin.net?subject=Tag-based%20formatting">Pascal Morin</a><br>
+License: Free for non-commercial use
+<h2>Description</h2>
+This extension lets you display several paragraphs inside a frame. The use of tags allows to
+change the font, the style (bold, italic, underline), the size, and the color of characters.<br>
+<br>
+To do this, 2 methods are available:<br>
+<br>
+- The first one to define your tags:<br>
+<br>
+<code>SetStyle(<b>string</b> tag, <b>string</b> family, <b>string</b> style, <b>int</b> size, <b>string</b> color [, <b>int</b> indent])</code><br>
+<br>
+<code><u>tag</u></code>: name of the tag<br>
+<code><u>family</u></code>: family of the font<br>
+<code><u>style</u></code>: N (normal) or combination of B, I, U<br>
+<code><u>size</u></code>: size<br>
+<code><u>color</u></code>: color (comma-separated RGB components)<br>
+<code><u>indent</u></code>: to be specified for the paragraph tag; indents the first line by the
+indicated value<br>
+<br>
+It is possible to use empty strings or null values, except for the paragraph tag. The values
+are obtained by inheritance; for instance, with &lt;p&gt;&lt;u&gt;, the non-specified values of
+&lt;u&gt; are replaced by those from &lt;p&gt;.<br>
+<br>
+- The second one to output text:<br>
+<br>
+<code>WriteTag(<b>float</b> w, <b>float</b> h, <b>string</b> txt [, <b>int</b> border [, <b>string</b> align [, <b>int</b> fill [, <b>mixed</b> padding]]]])</code><br>
+<br>
+<code><u>w</u></code>: width of the line (0 to go from one margin to the other)<br>
+<code><u>h</u></code>: height of a line<br>
+<code><u>txt</u></code>: text to display - must have at least one tag at beginning and end to delimit
+a paragraph<br>
+<code><u>border</u></code>: 0 for none, 1 to have a border (default value: 0)<br>
+<code><u>align</u></code>: justification of text: L, R, C or J (default value: J)<br>
+<code><u>fill</u></code>: 0 for none, 1 for background filling (default value: 0)<br>
+<code><u>padding</u></code>: either a numerical value or a string of the form "left,top,bottom,right"
+with 2, 3 or 4 specified values (default value: 0)
+</body>
+</html>

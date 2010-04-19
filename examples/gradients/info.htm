@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Gradients</title>
+<style type="text/css">
+body {font-family:"Times New Roman",serif}
+h1 {font:bold 135% Arial,sans-serif; color:#4000A0; margin-bottom:0.9em}
+h2 {font:bold 95% Arial,sans-serif; color:#900000; margin-top:1.5em; margin-bottom:1em}
+</style>
+</head>
+<body>
+<h1>Gradients</h1>
+<h2>Informations</h2>
+Author: <a href="mailto:fpdf@kreativschmiede.de?subject=Gradients">Andreas Würmser</a><br>
+License: FPDF
+<h2>Description</h2>
+Paints linear and radial gradients as well as multi-color gradients (coons patch meshes) inside a rectangle.<br>
+<br>
+<code>LinearGradient(<b>float</b> x, <b>float</b> y, <b>float</b> w, <b>float</b> h, <b>array</b> col1, <b>array</b> col2 [, <b>array</b> coords])</code><br>
+<br>
+<code><u>x</u></code>: abscissa of the top left corner of the rectangle.<br>
+<code><u>y</u></code>: ordinate of the top left corner of the rectangle.<br>
+<code><u>w</u></code>: width of the rectangle.<br>
+<code><u>h</u></code>: height of the rectangle.<br>
+<code><u>col1</u></code>: first color (RGB components).<br>
+<code><u>col2</u></code>: second color (RGB components).<br>
+<code><u>coords</u></code>: array of the form (x1, y1, x2, y2) which defines the gradient vector (see linear_gradient_coords.jpg).
+The default value is from left to right (x1=0, y1=0, x2=1, y2=0).<br>
+<br>
+<code>RadialGradient(<b>float</b> x, <b>float</b> y, <b>float</b> w, <b>float</b> h, <b>array</b> col1, <b>array</b> col2 [, <b>array</b> coords])</code><br>
+<br>
+<code><u>x</u></code>: abscissa of the top left corner of the rectangle.<br>
+<code><u>y</u></code>: ordinate of the top left corner of the rectangle.<br>
+<code><u>w</u></code>: width of the rectangle.<br>
+<code><u>h</u></code>: height of the rectangle.<br>
+<code><u>col1</u></code>: first color (RGB components).<br>
+<code><u>col2</u></code>: second color (RGB components).<br>
+<code><u>coords</u></code>: array of the form (fx, fy, cx, cy, r) where (fx, fy) is the starting point of the gradient with
+color1, (cx, cy) is the center of the circle with color2, and r is the radius of the circle (see radial_gradient_coords.jpg).
+(fx, fy) should be inside the circle, otherwise some areas will not be defined.<br>
+<br>
+<code>CoonsPatchMesh(<b>float</b> x, <b>float</b> y, <b>float</b> w, <b>float</b> h, <b>array</b> col1, <b>array</b> col2, <b>array</b> col3, <b>array</b> col4 [, <b>array</b> coords [, <b>float</b> coords_min [, <b>float</b> coords_max]]])</code><br>
+<br>
+<code><u>x</u></code>: abscissa of the top left corner of the rectangle.<br>
+<code><u>y</u></code>: ordinate of the top left corner of the rectangle.<br>
+<code><u>w</u></code>: width of the rectangle.<br>
+<code><u>h</u></code>: height of the rectangle.<br>
+<code><u>col1</u></code>: first color (lower left corner) (RGB components).<br>
+<code><u>col2</u></code>: second color (lower right corner) (RGB components).<br>
+<code><u>col3</u></code>: third color (upper right corner) (RGB components).<br>
+<code><u>col4</u></code>: fourth color (upper left corner) (RGB components).<br>
+<code><u>coords</u></code>:<br>
+<br>
+- for one patch mesh<br>
+<br>
+array(float x1, float y1, .... float x12, float y12):
+12 pairs of coordinates (normally from 0 to 1) which specify the Bézier control points that define the patch.
+First pair is the lower left edge point, next is its right control point (control point 2).
+Then the other points are defined in the order: control point 1, edge point, control point 2 going counter-clockwise around the patch.
+Last (x12, y12) is the first edge point's left control point (control point 1).<br>
+<br>
+- for two or more patch meshes<br>
+<br>
+array[number of patches]: arrays with the following keys for each patch:<br>
+<code>f</code>: where to put that patch (0 = first patch, 1, 2, 3 = right, top and left of precedent patch - I didn't figure this out completely - just try and error ;-)<br>
+<code>points</code>: 12 pairs of coordinates of the Bézier control points as above for the first patch,
+8 pairs of coordinates for the following patches, ignoring the coordinates already defined by the precedent patch
+(I also didn't figure out the order of these - also: try and see what's happening)<br>
+<code>colors</code>: must be 4 colors for the first patch, 2 colors for the following patches<br>
+<br>
+<code><u>coords_min</u></code>: minimum value used by the coordinates. If a coordinate's value is smaller than this it will be cut to coords_min. default: 0<br>
+<code><u>coords_max</u></code>: maximum value used by the coordinates. If a coordinate's value is greater than this it will be cut to coords_max. default: 1
+</body>
+</html>
