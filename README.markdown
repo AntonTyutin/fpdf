@@ -18,3 +18,5 @@ Other options
 --
 
 It seems someone started creating a [PHP 5 version of FPDF](http://code.google.com/p/fpdf-5/). However, it seems to be abandoned already. Might be worthwhile to import it and finish up the work.
+
+Might also be worthwhile checking out [R&S Pdf class](https://pdf-php.svn.sourceforge.net/svnroot/pdf-php).
