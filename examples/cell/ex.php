@@ -1,4 +1,5 @@
 <?php
+require_once '../../src/fpdf.php';
 require('cellpdf.php');
 
 $pdf=new CellPDF();
