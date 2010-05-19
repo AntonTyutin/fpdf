@@ -1,7 +1,5 @@
 <?php
-
 require_once 'XML/Tree/Morph.php';
-require_once 'fpdf.php'; 
 require_once 'XML/SvgToPdf/Base.php';
 require_once 'XML/SvgToPdf/G.php';
 require_once 'XML/SvgToPdf/Rect.php';
@@ -11,7 +9,7 @@ require_once 'XML/SvgToPdf/Path.php';
 
 class XML_SvgToPDF_SVG   extends XML_SvgToPDF_Base { }
 
-        
+
 class XML_SvgToPDF {
 
     function debug($s,$e=0) {
@@ -19,9 +17,9 @@ class XML_SvgToPDF {
     }
     function construct($svg, $data=array()) {
         $t = new XML_SvgToPDF;
-    
-    
-        $x = new XML_Tree_Morph( 
+
+
+        $x = new XML_Tree_Morph(
                     $svg,
                     array(
                        'debug' => 0,
@@ -37,12 +35,12 @@ class XML_SvgToPDF {
                         )
                     )
                  );
-        $tree = $x->getTreeFromFile();  
+        $tree = $x->getTreeFromFile();
         $tree = $t->buildobject($tree);
-        
-        
+
+
         $orientation =  ($tree->width > $tree->height) ? 'L' : 'P';
-            
+
         $pdf=new FPDF($orientation ,'mm','A4');
         $pdf->open();
         $pdf->setAutoPageBreak(false);
@@ -51,8 +49,8 @@ class XML_SvgToPDF {
         if (is_object($data)) {
             $data = (array) $data;
         }
-        
-        
+
+
         // no data page..
         if (empty($data)) {
             $pdf->addPage();
@@ -63,11 +61,11 @@ class XML_SvgToPDF {
         // work out how many pages...
         list($var,$perpage) = $tree->calcPerPage();
 
-		if($var=='')        
+		if($var=='')
 			die('No dynamic group found');
 		if(!isset($data[$var]))
 			die('Incorrect dynamic group name');
-        
+
         $alldata = $data[$var];
         $page = 0;
         while (count($alldata)) {
@@ -81,7 +79,7 @@ class XML_SvgToPDF {
         $t->debug($tree);
         return $pdf;
     }
-    
+
     function buildNull($node) {
         return;
     }
@@ -95,8 +93,8 @@ class XML_SvgToPDF {
         $r->fromNode($node);
         return $r;
     }
-    
-    
+
+
 
 
 }
